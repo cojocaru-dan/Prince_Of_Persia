@@ -69,15 +69,26 @@ function manuallyControl(key) {
 
 //Potion functions 
 
-function givePotion2Answer(){
-};
+function givePotion2Answer(list){
+    let sum = 0;
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] % 2 === 0){
+        sum += list[i];
+      }
+    return sum;
+    }
+  };
+
 function givePotion3Answer(){
 };
 function givePotion4Answer(){
 };
 function givePotion5Answer(){
 };
-function givePotion6Answer(){
+function givePotion6Answer(input){
+  let sum = 0;
+  sum += input.filter(Number);
+  return sum;
 };
 function givePotion7Answer(){
 };
