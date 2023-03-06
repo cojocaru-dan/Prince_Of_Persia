@@ -1,4 +1,4 @@
-
+// getStairsMovementDirection
 function getStairsMovementDirection(stairNumber, isClimbingStairs) {
   if (isClimbingStairs === false && stairNumber % 2 === 0) {
     return "down"; 
@@ -11,10 +11,60 @@ function getStairsMovementDirection(stairNumber, isClimbingStairs) {
   }
 };
 
-function getZigZagMovementDirection(){
+// getZigZagMovementDirection
+function getZigZagMovementDirection(step){
+  // if(step == 0){
+  //   return "up";
+  // }else if (step >= 1 && step <= 2) {
+  //   return "right";
+  // } else if(step == 3){
+  //   return "down";
+  // }else if(step >= 4 && step <=5){
+  //   return "right";
+  // }else if(step == 6){
+  //   return "up";
+  // }else if(step >= 7 && step <= 8){
+  //   return "right";
+  // }else if(step == 9){
+  //   return "down";
+  // }
+
+  if ([1,2,4,5,7,8].includes(step)) {
+    return "right";
+  }else if([3,9].includes(step)){
+    return "down";
+  }else 
+  return "up"
 };
 
-function manuallyControl() {
+// manuallyControl
+let pressed = 0;
+function manuallyControl(key) {
+  if (key == "KeyQ") {
+    pressed++;
+  }
+  
+  if (pressed % 2 == 0) {
+    if (key == "KeyA" ){
+      moveDirection("left");
+    }else if(key == "KeyW"){
+      moveDirection("up");
+    }else if(key == "KeyS" ){
+      moveDirection("down");
+    }else if(key == "KeyD" ){
+      moveDirection("right");
+    }
+  }else { 
+    if(key == "ArrowLeft" ){
+      moveDirection("left");
+    }else if(key == "ArrowUp"){
+      moveDirection("up");
+    }else if(key == "ArrowDown" ){
+      moveDirection("down");
+    }else if(key == "ArrowRight" ){
+      moveDirection("right");
+    }
+  }
 };
 
 //Potion functions 
