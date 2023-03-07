@@ -101,8 +101,22 @@ function givePotion4Answer(x, y){
   return result;
 }
 
-function givePotion5Answer(){
-};
+function givePotion5Answer(hours, minutes, seconds, secondsToAdd){
+  seconds += secondsToAdd;
+  if (seconds > 59) {
+    seconds -= 60;
+    minutes += 1;
+  }
+  if (minutes > 59) {
+    minutes -= 60;
+    hours += 1
+  }
+  if(hours > 23) {
+    hours = 0;
+  }
+  return `${hours}:${minutes}:${seconds}`;
+}
+
 function givePotion6Answer(input){
   let numbers = input.split("*");
   let sum = 0;
