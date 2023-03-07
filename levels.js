@@ -114,8 +114,17 @@ function givePotion6Answer(input){
   return sum;
 }
 
-function givePotion7Answer(){
+function givePotion7Answer(txt){
+  let splitTxt = txt.split("");
+  let sum = 0;
+  for (let i = 0; i < splitTxt.length; i++) {
+    if (txt[i] === "number") {
+      sum += parseInt(txt[i]);
+    }
+    }
+    return sum;
 };
+
 function givePotion8Answer(){
 };
 function givePotion9Answer(){
