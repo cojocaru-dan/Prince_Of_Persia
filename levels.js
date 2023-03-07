@@ -149,8 +149,11 @@ function givePotion8Answer(numbers){
   }
 };
 
-function givePotion9Answer(){
-};
+function givePotion9Answer(array){
+  array.sort(function(a, b) {return a - b});
+  return array[0] + array[1];
+}
+
 function givePotion10Answer(){
 };
 function givePotion11Answer(){
