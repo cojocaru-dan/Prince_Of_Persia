@@ -72,7 +72,7 @@ function manuallyControl(key) {
 function givePotion2Answer(list){
     let sum = 0;
     for (let i = 0; i < list.length; i++) {
-      if (list[i] % 2 === 0){
+      if (list[i] % 2 == 0){
         sum += list[i];
       }
     return sum;
@@ -132,11 +132,12 @@ function givePotion7Answer(txt){
   let splitTxt = txt.split("");
   let sum = 0;
   for (let i = 0; i < splitTxt.length; i++) {
-    if (txt[i] === "number") {
-      sum += parseInt(txt[i]);
+    if (typeof splitTxt[i] === "number") {
+      sum += splitTxt[i];
     }
     }
     return sum;
+   
 };
 
 function givePotion8Answer(){
