@@ -89,8 +89,18 @@ function givePotion3Answer(arr){
   return num;
 };
 
-function givePotion4Answer(){
-};
+function givePotion4Answer(x, y){
+  let result = "";
+  for (let i = 0; i < x.length; i++) {
+    if (y.includes(x[i])) {
+      result += x[i].toUpperCase();
+    } else {
+      result += x[i];
+    }
+  }
+  return result;
+}
+
 function givePotion5Answer(){
 };
 function givePotion6Answer(input){
