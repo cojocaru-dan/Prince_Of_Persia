@@ -86,10 +86,16 @@ function givePotion4Answer(){
 function givePotion5Answer(){
 };
 function givePotion6Answer(input){
+  let numbers = input.split("*");
   let sum = 0;
-  sum += input.filter(Number);
+  for (const item of numbers) {
+    if (typeof Number(item) === "number") {
+      sum += Number(item);
+    }
+  }
   return sum;
-};
+}
+
 function givePotion7Answer(){
 };
 function givePotion8Answer(){
