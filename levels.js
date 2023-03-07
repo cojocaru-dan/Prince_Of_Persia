@@ -70,14 +70,14 @@ function manuallyControl(key) {
 //Potion functions 
 
 function givePotion2Answer(list){
-    let sum = 0;
-    for (let i = 0; i < list.length; i++) {
-      if (list[i] % 2 == 0){
-        sum += list[i];
-      }
-    return sum;
+  let sum = 0;
+  for (const number of list){
+    if (number % 2 === 0){
+      sum += number;
     }
-  };
+  }
+  return sum;
+};
 
 function givePotion3Answer(arr){
   let num = arr[0];
