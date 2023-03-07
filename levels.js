@@ -131,9 +131,9 @@ function givePotion6Answer(input){
 function givePotion7Answer(txt){
   let splitTxt = txt.split("");
   let sum = 0;
-  for (let i = 0; i < splitTxt.length; i++) {
-    if (typeof splitTxt[i] === "number") {
-      sum += splitTxt[i];
+  for (const myTxt of splitTxt) {
+    if (isNaN(parseInt(myTxt)) == false) {
+      sum += parseInt(myTxt);
     }
     }
     return sum;
