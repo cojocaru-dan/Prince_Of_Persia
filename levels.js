@@ -140,8 +140,15 @@ function givePotion7Answer(txt){
    
 };
 
-function givePotion8Answer(){
+function givePotion8Answer(numbers){
+  for (let i = 2; i < numbers - 1; i++) {
+    if (numbers % i === 0) {
+      return false;
+    }
+  return true;
+  }
 };
+
 function givePotion9Answer(){
 };
 function givePotion10Answer(){
