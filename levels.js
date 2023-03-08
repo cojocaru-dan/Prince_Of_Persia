@@ -154,7 +154,13 @@ function givePotion9Answer(array){
   return array[0] + array[1];
 }
 
-function givePotion10Answer(){
+function givePotion10Answer(letter,str){
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 };
 function givePotion11Answer(){
 };
