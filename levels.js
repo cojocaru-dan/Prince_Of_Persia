@@ -197,13 +197,38 @@ function givePotion12Answer(list){
 
 // Potion functions ^
 
+let toSkip = "";
+let movement = false;
+function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince) {
+  movement = false;
+  const arr = [elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince];
+  const directions = ["left", "right", "up", "down"];
+  for (let i = 0; i < 4; i++) {
+    hasMovedToTile(directions[i], arr[i]);
+    console.log(toSkip);
+    if (movement) {
+      break;
+    }
+  }
+}
 
-function level7Move() {
-};
-
-function hasMovedToTile(){
-};
-
+function hasMovedToTile(direction, tileToCheck) {
+  if (tileToCheck === 11 && direction != toSkip) {
+    moveDirection(direction);
+    movement = true;
+    if (direction === "left") {
+      toSkip = "right";
+    } else if (direction === "right") {
+      toSkip = "left";
+    } else if (direction === "up") {
+      toSkip = "down";
+    } else if (direction === "down") {
+      toSkip = "up";
+    }
+  } else if (tileToCheck === 13) {
+    return;
+  }
+}
 function level8Move() {
 };
 

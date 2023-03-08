@@ -9,7 +9,7 @@ import { postError, pImp } from '/public/jet.js';
 
 
 
-const tickTime = 1;
+const tickTime = 600;
 const commandQueue = []
 const gameStats = {
   playerLocationX: 0,
