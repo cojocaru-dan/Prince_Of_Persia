@@ -204,6 +204,12 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
   const arr = [elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince];
   const directions = ["left", "right", "up", "down"];
   for (let i = 0; i < 4; i++) {
+    if (elementLeftOfPrince === 11 && elementRightOfPrince === 13 && elementUpOfPrince === 11 && elementDownOfPrince === 11) {
+      codeDown("down");
+      if (elementDownOfPrince === 99) {
+        codeDown("down");
+      }
+    }
     hasMovedToTile(directions[i], arr[i]);
     console.log(toSkip);
     if (movement) {
@@ -211,7 +217,9 @@ function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince
     }
   }
 }
-
+function codeDown(string) {
+  moveDirection(string);
+}
 function hasMovedToTile(direction, tileToCheck) {
   if (tileToCheck === 11 && direction != toSkip) {
     moveDirection(direction);
