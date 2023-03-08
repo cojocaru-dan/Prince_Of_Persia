@@ -69,13 +69,18 @@ function manuallyControl(key) {
 
 //Potion functions 
 
-function givePotion2Answer(list){
+function givePotion2Answer(array){
   let sum = 0;
-  for (const number of list){
-    if (number % 2 === 0){
-      sum += number;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      sum += array[i];
     }
   }
+  // for (const number of list){
+  //   if (number % 2 === 0){
+  //     sum += number;
+  //   }
+  // }
   return sum;
 };
 
@@ -162,8 +167,22 @@ function givePotion10Answer(letter,str){
   }
   return -1;
 };
-function givePotion11Answer(){
+// function givePotion10Answer(item,array){
+//   return array.indexOf(item);
+// }
+
+function givePotion11Answer(arr, toReplace, useInstead){
+  let res = "";
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === toReplace) {
+      res += useInstead;
+    } else {
+      res += arr[i];
+    }
+  }
+  return res;
 };
+
 function givePotion12Answer(list){
   let sum = 0;
   for (let i = 0; i < list.length; i++) {
