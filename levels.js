@@ -158,7 +158,16 @@ function givePotion10Answer(){
 };
 function givePotion11Answer(){
 };
-function givePotion12Answer(){
+function givePotion12Answer(list){
+  let sum = 0;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] < 0) {
+      sum += (-1 * list[i]);
+    }else{
+      sum += list[i];
+    } 
+  }
+  return sum;
 };
 
 // Potion functions ^
