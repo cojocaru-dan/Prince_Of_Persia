@@ -250,8 +250,54 @@ function hasMovedToTile(direction, tileToCheck) {
     return;
   }
 }
-function level8Move() {
+
+let playerPosition = [];
+let firePosition = [];
+let freeSpacePosition = [];
+let princessPosition = [];
+
+function level8Move(gameMap) {
+  const directionsArr = [];
+  const directions = ["left", "right", "up", "down"];
+  getPosition(gameMap,10,playerPosition);
+  getPosition(gameMap,99,princessPosition);
+  // for (let i = 0; i < gameMap.length; i++) {
+  //   if (gameMap[i].indexOf(10) != -1) {
+  //     playerPosition.push(i);
+  //     playerPosition.push(gameMap[i].indexOf(10));
+  //     console.log(playerPosition);
+  //     break;
+  //   }
+  // }
+  let neighbours = [];
+  
+  if (gameMap[playerPosition[0] + 1][playerPosition[1]] === 99) {
+   directionsArr.push("down");
+  }else if(gameMap[playerPosition[0] -1][playerPosition[1]] == 99){
+    directionsArr.push("up");
+  }else if(gameMap[playerPosition[0][playerPosition[1] + 1] == 99]){
+    directionsArr.push("right");
+  }else if(gameMap[playerPosition[0][playerPosition[1] - 1] == 99]){
+    directionsArr.push("left");
+  }
+  
+  
 };
+
+function getPosition(gameMap,number,arrayName){
+ 
+  for (let i = 0; i < gameMap.length; i++) {
+    if (gameMap[i].indexOf(number) != -1) {
+      arrayName.push(i);
+      arrayName.push(gameMap[i].indexOf(number));
+      console.log(arrayName);
+      break;
+    }
+  }
+  return arrayName;
+}
+
+
 
 // DON'T MODIFY THE CODE BELOW THIS LINE
 
