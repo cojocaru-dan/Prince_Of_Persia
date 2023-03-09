@@ -251,52 +251,64 @@ function hasMovedToTile(direction, tileToCheck) {
   }
 }
 
-let playerPosition = [];
-let firePosition = [];
-let freeSpacePosition = [];
-let princessPosition = [];
-
 function level8Move(gameMap) {
   const directionsArr = [];
-  const directions = ["left", "right", "up", "down"];
-  getPosition(gameMap,10,playerPosition);
-  getPosition(gameMap,99,princessPosition);
-  // for (let i = 0; i < gameMap.length; i++) {
-  //   if (gameMap[i].indexOf(10) != -1) {
-  //     playerPosition.push(i);
-  //     playerPosition.push(gameMap[i].indexOf(10));
-  //     console.log(playerPosition);
-  //     break;
-  //   }
-  // }
-  let neighbours = [];
-  
-  if (gameMap[playerPosition[0] + 1][playerPosition[1]] === 99) {
-   directionsArr.push("down");
-  }else if(gameMap[playerPosition[0] -1][playerPosition[1]] == 99){
-    directionsArr.push("up");
-  }else if(gameMap[playerPosition[0][playerPosition[1] + 1] == 99]){
-    directionsArr.push("right");
-  }else if(gameMap[playerPosition[0][playerPosition[1] - 1] == 99]){
-    directionsArr.push("left");
-  }
-  
-  
-};
-
-function getPosition(gameMap,number,arrayName){
- 
+  const playerPos = [];
   for (let i = 0; i < gameMap.length; i++) {
-    if (gameMap[i].indexOf(number) != -1) {
-      arrayName.push(i);
-      arrayName.push(gameMap[i].indexOf(number));
-      console.log(arrayName);
+    if (gameMap[i].indexOf(10) != -1) {
+      playerPos.push(i);
+      playerPos.push(gameMap[i].indexOf(10));
       break;
     }
   }
-  return arrayName;
+  let neighbours = {
+    left: gameMap[playerPos[0]][playerPos[1] - 1], 
+    right: gameMap[playerPos[0]][playerPos[1] + 1], 
+    up: gameMap[playerPos[0] - 1][playerPos[1]], 
+    down: gameMap[playerPos[0] + 1][playerPos[1]]
+  }
+  while (!Object.keys(neighbours).map((key) => neighbours[key]).includes(99)) {
+    const freeSpaces = [];
+    for (const key in neighbours) {
+      if (neighbours[key] === 11) {
+        freeSpaces.push(key);
+      }
+    }
+    if (freeSpaces.length === 2) {
+      directionsArr.push("down");
+      gameMap[playerPos[0]][playerPos[1]] = 13;
+      playerPos[0] += 1;
+    } else if (freeSpaces.length === 1) {
+      directionsArr.push(freeSpaces[0]);
+      gameMap[playerPos[0]][playerPos[1]] = 13;
+      if (freeSpaces[0] === "left") {
+        playerPos[1] -= 1;
+      } else if (freeSpaces[0] === "right") {
+        playerPos[1] += 1;
+      } else if (freeSpaces[0] === "up") {
+        playerPos[0] -= 1;
+      } else if (freeSpaces[0] === "down") {
+        playerPos[0] += 1;
+      }
+    }
+    neighbours = {
+      left: gameMap[playerPos[0]][playerPos[1] - 1], 
+      right: gameMap[playerPos[0]][playerPos[1] + 1], 
+      up: gameMap[playerPos[0] - 1][playerPos[1]], 
+      down: gameMap[playerPos[0] + 1][playerPos[1]]
+    };
+  }
+  if (neighbours.left === 99) {
+    directionsArr.push("left");
+  } else if (neighbours.right === 99) {
+    directionsArr.push("right");
+  } else if (neighbours.up === 99) {
+    directionsArr.push("up");
+  } else {
+    directionsArr.push("down");
+  }
+  return directionsArr;
 }
-
 
 
 // DON'T MODIFY THE CODE BELOW THIS LINE
