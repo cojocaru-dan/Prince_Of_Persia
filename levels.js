@@ -198,32 +198,45 @@ function givePotion12Answer(list){
 // Potion functions ^
 
 let toSkip = "";
-let movement = false;
+// let movement = false;
 function level7Move(elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince) {
-  movement = false;
+  // movement = false;
   const arr = [elementLeftOfPrince, elementRightOfPrince, elementUpOfPrince, elementDownOfPrince];
   const directions = ["left", "right", "up", "down"];
-  for (let i = 0; i < 4; i++) {
-    if (elementLeftOfPrince === 11 && elementRightOfPrince === 13 && elementUpOfPrince === 11 && elementDownOfPrince === 11) {
-      codeDown("down");
-      if (elementDownOfPrince === 99) {
-        codeDown("down");
-      }
-    }
-    hasMovedToTile(directions[i], arr[i]);
-    console.log(toSkip);
-    if (movement) {
-      break;
-    }
+  const freeSpaces = arr.map(function(item, idx) {return [directions[idx], item]}).filter(function(item) {return item[1] === 11 && item[0] !== toSkip});
+  const princessTile = arr.map(function(item, idx) {return [directions[idx], item]}).filter(function(item) {return item[1] === 99});
+  if (princessTile.length === 1)  {
+    hasMovedToTile(princessTile[0][0], princessTile[0][1]);
+  } else if (freeSpaces.length === 2) {
+    hasMovedToTile("down", elementDownOfPrince);
+  } else if (freeSpaces.length === 1) {
+    hasMovedToTile(freeSpaces[0][0], freeSpaces[0][1]);
   }
+  // } else if (elementLeftOfPrince === 99) {
+  //   hasMovedToTile("left", elementLeftOfPrince);
+  // }
+  // for (let i = 0; i < 4; i++) {
+  //   if (elementLeftOfPrince === 11 && elementRightOfPrince === 13 && elementUpOfPrince === 11 && elementDownOfPrince === 11) {
+  //     codeDown("down");
+  //     if (elementDownOfPrince === 99) {
+  //       codeDown("down");
+  //     }
+  //   }
+  //   hasMovedToTile(directions[i], arr[i]);
+  //   console.log(toSkip);
+  //   if (movement) {
+  //     break;
+  //   }
+  // }
 }
-function codeDown(string) {
-  moveDirection(string);
-}
+// function codeDown(string) {
+//   moveDirection(string);
+// }
 function hasMovedToTile(direction, tileToCheck) {
-  if (tileToCheck === 11 && direction != toSkip) {
+  if (tileToCheck === 99) {
     moveDirection(direction);
-    movement = true;
+  } else if (tileToCheck === 11 && direction !== toSkip) {
+    moveDirection(direction);
     if (direction === "left") {
       toSkip = "right";
     } else if (direction === "right") {
